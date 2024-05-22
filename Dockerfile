@@ -36,13 +36,6 @@ RUN cp /var/www/html/wordpress/wp-content/mu-plugins/sqlite-database-integration
 RUN sed -i "s#{SQLITE_IMPLEMENTATION_FOLDER_PATH}#/var/www/html/wordpress/wp-content/mu-plugins#" /var/www/html/wordpress/wp-content/db.php 
 RUN sed -i 's#{SQLITE_PLUGIN}#sqlite-database-integration/load.php#' /var/www/html/wordpress/wp-content/db.php
 
-# 修改数据库设置
-RUN sqlite3 "/var/www/html/wordpress/wp-content/database/.ht.sqlite" <<EOF \
-    && UPDATE wp_options SET option_value = '$siteurl' WHERE option_name = 'siteurl'; \
-    && UPDATE wp_options SET option_value = '$siteurl' WHERE option_name = 'home'; \
-    && .quit \
-    && EOF
-
 RUN chmod 755 -R /var/www/html/wordpress \
     && chmod 640 /var/www/html/wordpress/wp-content/database/.ht.sqlite \
     && chown www-data:www-data -R /var/www/html/wordpress
