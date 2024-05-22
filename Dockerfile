@@ -1,5 +1,7 @@
 FROM debian:12.5-slim
 
+VOLUME /data/caddy
+
 # 更新并安装所需的软件包
 RUN apt-get update && apt-get install -y \
     sed wget curl vim tar zstd
