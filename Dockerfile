@@ -6,13 +6,14 @@ RUN apt-get update && apt-get install -y \
 
 # 下载和安装 Caddy
 RUN mkdir -p /data/caddy/config
+RUN mkdir -p /data/caddy/config.d
 RUN wget -O /data/caddy/caddy.tar.gz https://raw.githubusercontent.com/WJQSERVER/tools-stable/main/program/caddy/caddy.tar.gz
 RUN tar -xzvf /data/caddy/caddy.tar.gz -C /data/caddy 
 RUN rm /data/caddy/caddy.tar.gz 
 RUN chmod +x /data/caddy/caddy 
 RUN chown www-data:www-data /data/caddy/caddy 
 RUN wget -O /data/caddy/Caddyfile https://raw.githubusercontent.com/WJQSERVER/tools-stable/main/web/caddy/Caddyfile
+RUN wget -O /usr/local/bin/entrypoint.sh https://raw.githubusercontent.com/WJQSERVER/tools-stable/main/web/caddy/entrypoint.sh 
 
-VOLUME /data/caddy
-
-CMD ["/data/caddy/caddy", "run", "--config", "/data/caddy/Caddyfile"]
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+CMD ["/data/caddy/caddy", "run", "--config", "/data/caddy/config/Caddyfile"]
