@@ -5,15 +5,15 @@ RUN apt-get update && apt-get install -y \
     php php-cgi php-fpm php-curl php-gd php-mbstring php-xml php-sqlite3 sqlite3 php-mysqli unzip sed wget curl vim git sudo tar zstd
 
 # 下载和安装 Caddy
-RUN mkdir -p /data/caddy/config \
-    && wget -O /data/caddy/caddy.tar.gz https://raw.githubusercontent.com/WJQSERVER/tools-stable/main/program/caddy/caddy.tar.gz \
-    && tar -xzvf /data/caddy/caddy.tar.gz -C /root/data/caddy \
-    && rm /data/caddy/caddy.tar.gz \
-    && chmod +x /data/caddy/caddy \
-    && chown root:root /data/caddy/caddy \
-    && wget -O /data/caddy/Caddyfile https://raw.githubusercontent.com/WJQSERVER/tools-stable/main/web/wordpress/Caddyfile \
-    && wget -O /root/data/entrypoint.sh https://raw.githubusercontent.com/WJQSERVER/tools-stable/main/web/wordpress/entrypoint.sh \
-    && chmod 755 entrypoint.sh
+RUN mkdir -p /data/caddy/config
+RUN wget -O /data/caddy/caddy.tar.gz https://raw.githubusercontent.com/WJQSERVER/tools-stable/main/program/caddy/caddy.tar.gz
+RUN tar -xzvf /data/caddy/caddy.tar.gz -C /root/data/caddy 
+RUN rm /data/caddy/caddy.tar.gz 
+RUN chmod +x /data/caddy/caddy 
+RUN chown root:root /data/caddy/caddy 
+RUN wget -O /data/caddy/Caddyfile https://raw.githubusercontent.com/WJQSERVER/tools-stable/main/web/wordpress/Caddyfile 
+RUN wget -O /root/data/entrypoint.sh https://raw.githubusercontent.com/WJQSERVER/tools-stable/main/web/wordpress/entrypoint.sh 
+RUN chmod 755 entrypoint.sh
 
 # 下载和安装 WordPress
 RUN wget -q https://cn.wordpress.org/latest-zh_CN.zip \
