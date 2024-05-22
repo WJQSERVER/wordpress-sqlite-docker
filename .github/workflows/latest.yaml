@@ -30,4 +30,4 @@ jobs:
         with:
           platforms: linux/amd64
           push: true
-          tags: wjqserver/wordpress:latest
+          tags: wjqserver/caddy:latest
