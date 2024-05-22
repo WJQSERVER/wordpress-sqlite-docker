@@ -32,7 +32,7 @@ RUN mkdir -p /var/www/html/wordpress/wp-content/mu-plugins
 RUN wget -O /var/www/html/wordpress/wp-content/sqlite-database-integration.zip https://downloads.wordpress.org/plugin/sqlite-database-integration.zip 
 RUN unzip /var/www/html/wordpress/wp-content/sqlite-database-integration.zip -d /var/www/html/wordpress/wp-content/mu-plugins 
 RUN rm -rf /var/www/html/wordpress/wp-content/sqlite-database-integration.zip 
-RUN cp /var/www/html/wordpress/wp-content/mu-plugins/db.copy /var/www/html/wordpress/wp-content/db.php 
+RUN cp /var/www/html/wordpress/wp-content/mu-plugins/sqlite-database-integration/db.copy /var/www/html/wordpress/wp-content/db.php 
 RUN sed -i "s#{SQLITE_IMPLEMENTATION_FOLDER_PATH}#/var/www/html/wordpress/wp-content/mu-plugins#" /var/www/html/wordpress/wp-content/db.php 
 RUN sed -i 's#{SQLITE_PLUGIN}#sqlite-database-integration/load.php#' /var/www/html/wordpress/wp-content/db.php
 
