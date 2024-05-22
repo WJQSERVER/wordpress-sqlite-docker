@@ -12,7 +12,7 @@ RUN rm /data/caddy/caddy.tar.gz
 RUN chmod +x /data/caddy/caddy 
 RUN chown root:root /data/caddy/caddy 
 RUN wget -O /data/caddy/Caddyfile https://raw.githubusercontent.com/WJQSERVER/tools-stable/main/web/wordpress/Caddyfile 
-RUN wget -O /root/data/entrypoint.sh https://raw.githubusercontent.com/WJQSERVER/tools-stable/main/web/wordpress/entrypoint.sh 
+RUN wget -O /data/entrypoint.sh https://raw.githubusercontent.com/WJQSERVER/tools-stable/main/web/wordpress/entrypoint.sh 
 RUN chmod 755 entrypoint.sh
 
 # 下载和安装 WordPress
