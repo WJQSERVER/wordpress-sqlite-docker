@@ -35,8 +35,6 @@ RUN wget -O /var/www/html/wordpress.d/wp-content/sqlite-database-integration.zip
 RUN unzip /var/www/html/wordpress.d/wp-content/sqlite-database-integration.zip -d /var/www/html/wordpress.d/wp-content/mu-plugins 
 RUN rm -rf /var/www/html/wordpress.d/wp-content/sqlite-database-integration.zip 
 RUN cp /var/www/html/wordpress.d/wp-content/mu-plugins/sqlite-database-integration/db.copy /var/www/html/wordpress.d/wp-content/db.php 
-RUN sed -i "s#{SQLITE_IMPLEMENTATION_FOLDER_PATH}#/var/www/html/wordpress/wp-content/mu-plugins#" /var/www/html/wordpress/wp-content/db.php 
-RUN sed -i 's#{SQLITE_PLUGIN}#sqlite-database-integration/load.php#' /var/www/html/wordpress/wp-content/db.php
 
 RUN chmod 755 -R /var/www/html/wordpress.d 
 RUN chmod 640 /var/www/html/wordpress.d/wp-content/database/.ht.sqlite 
