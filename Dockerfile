@@ -63,4 +63,5 @@ RUN cat > /data/caddy/config/wordpress <<EOF \
 
 ENTRYPOINT ["/data/entrypoint.sh"]
 
-CMD ["/data/caddy/caddy", "run", "--config", "/data/caddy/Caddyfile"]
+CMD ["/data/caddy/caddy", "run", "--config", "/data/caddy/Caddyfile", "<<EOF"]
+EOF
