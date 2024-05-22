@@ -19,7 +19,7 @@ RUN chmod 755 /usr/local/bin/init.sh
 RUN mkdir -p /var/www/html/wordpress.d
 RUN mkdir -p /var/www/html/wordpress
 RUN wget -O /var/www/html/wordpress.d/latest-zh_CN.zip https://cn.wordpress.org/latest-zh_CN.zip
-RUN unzip /var/www/html/wordpress.d/latest-zh_CN.zip -d /var/www/html/wordpress
+RUN unzip /var/www/html/wordpress.d/latest-zh_CN.zip -d /var/www/html/wordpress.d
 RUN mv /var/www/html/wordpress.d/wordpress/* /var/www/html/wordpress.d
 RUN rm -rf latest-zh_CN.zip /var/www/html/wordpress.d/wordpress
 
