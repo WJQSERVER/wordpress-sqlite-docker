@@ -23,18 +23,18 @@ RUN mv /var/www/html/wordpress/wordpress/* /var/www/html/wordpress
 RUN rm -rf latest-zh_CN.zip /var/www/html/wordpress/wordpress
 
 # 下载 wp-config.php 和数据库文件
-RUN wget -O /var/www/html/wordpress/wp-config.php https://raw.githubusercontent.com/WJQSERVER/tools-stable/main/web/wordpress/wp-config.php \
-    && mkdir -p /var/www/html/wordpress/wp-content/database \
-    && wget https://raw.githubusercontent.com/WJQSERVER/tools-stable/main/web/wordpress/db.sqlite -P /var/www/html/wordpress/wp-content/database
+RUN wget -O /var/www/html/wordpress/wp-config.php https://raw.githubusercontent.com/WJQSERVER/tools-stable/main/web/wordpress/wp-config.php 
+RUN mkdir -p /var/www/html/wordpress/wp-content/database 
+RUN wget https://raw.githubusercontent.com/WJQSERVER/tools-stable/main/web/wordpress/db.sqlite -P /var/www/html/wordpress/wp-content/database
 
 # 安装 SQLite 插件
-RUN mkdir -p /var/www/html/wordpress/wp-content/mu-plugins \
-    && wget -O /var/www/html/wordpress/wp-content/sqlite-database-integration.zip https://downloads.wordpress.org/plugin/sqlite-database-integration.zip \
-    && unzip /var/www/html/wordpress/wp-content/sqlite-database-integration.zip -d /var/www/html/wordpress/wp-content/mu-plugins \
-    && rm -rf /var/www/html/wordpress/wp-content/sqlite-database-integration.zip \
-    && cp /var/www/html/wordpress/wp-content/mu-plugins/db.copy /var/www/html/wordpress/wp-content/db.php \
-    && sed -i "s#{SQLITE_IMPLEMENTATION_FOLDER_PATH}#/var/www/html/wordpress/wp-content/mu-plugins#" /var/www/html/wordpress/wp-content/db.php \
-    && sed -i 's#{SQLITE_PLUGIN}#sqlite-database-integration/load.php#' /var/www/html/wordpress/wp-content/db.php
+RUN mkdir -p /var/www/html/wordpress/wp-content/mu-plugins 
+RUN wget -O /var/www/html/wordpress/wp-content/sqlite-database-integration.zip https://downloads.wordpress.org/plugin/sqlite-database-integration.zip 
+RUN unzip /var/www/html/wordpress/wp-content/sqlite-database-integration.zip -d /var/www/html/wordpress/wp-content/mu-plugins 
+RUN rm -rf /var/www/html/wordpress/wp-content/sqlite-database-integration.zip 
+RUN cp /var/www/html/wordpress/wp-content/mu-plugins/db.copy /var/www/html/wordpress/wp-content/db.php 
+RUN sed -i "s#{SQLITE_IMPLEMENTATION_FOLDER_PATH}#/var/www/html/wordpress/wp-content/mu-plugins#" /var/www/html/wordpress/wp-content/db.php 
+RUN sed -i 's#{SQLITE_PLUGIN}#sqlite-database-integration/load.php#' /var/www/html/wordpress/wp-content/db.php
 
 # 修改数据库设置
 RUN sqlite3 "/var/www/html/wordpress/wp-content/database/.ht.sqlite" <<EOF \
