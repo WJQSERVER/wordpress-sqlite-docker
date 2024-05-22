@@ -41,7 +41,7 @@ RUN chmod 755 -R /var/www/html/wordpress
 RUN chmod 640 /var/www/html/wordpress/wp-content/database/.ht.sqlite 
 RUN chown www-data:www-data -R /var/www/html/wordpress
 
-RUN cat > /data/caddy/config/wordpress <<EOF \
+RUN cat <<EOF > /data/caddy/config/wordpress \
     && $siteurl { \
         root * /root/data/caddy/pages/demo \
         php_fastcgi unix//run/php/php8.2-fpm.sock { \
@@ -54,9 +54,5 @@ RUN cat > /data/caddy/config/wordpress <<EOF \
     } \
     && EOF
 
-
-
 ENTRYPOINT ["/data/entrypoint.sh"]
-
-CMD ["/data/caddy/caddy", "run", "--config", "/data/caddy/Caddyfile", "<<EOF"]
-EOF
+CMD ["/data/caddy/caddy", "run", "--config", "/data/caddy/Caddyfile"]
