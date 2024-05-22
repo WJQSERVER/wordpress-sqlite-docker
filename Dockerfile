@@ -22,7 +22,7 @@ RUN wget -q https://cn.wordpress.org/latest-zh_CN.zip \
     && rm -rf latest-zh_CN.zip /var/www/html/wordpress/wordpress
 
 # 下载 wp-config.php 和数据库文件
-RUN wget https://raw.githubusercontent.com/WJQSERVER/tools-stable/main/web/wordpress/wp-config.php \
+RUN wget -O /var/www/html/wordpress/wp-config.php https://raw.githubusercontent.com/WJQSERVER/tools-stable/main/web/wordpress/wp-config.php \
     && mkdir -p /var/www/html/wordpress/wp-content/database \
     && wget https://raw.githubusercontent.com/WJQSERVER/tools-stable/main/web/wordpress/db.sqlite -P /var/www/html/wordpress/wp-content/database
 
