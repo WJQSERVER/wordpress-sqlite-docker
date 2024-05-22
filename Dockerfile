@@ -28,9 +28,9 @@ RUN wget -O /var/www/html/wordpress/wp-config.php https://raw.githubusercontent.
 
 # 安装 SQLite 插件
 RUN mkdir -p /var/www/html/wordpress/wp-content/mu-plugins \
-    && wget https://downloads.wordpress.org/plugin/sqlite-database-integration.zip \
-    && unzip -qq sqlite-database-integration.zip -d /var/www/html/wordpress/wp-content/mu-plugins \
-    && rm -rf sqlite-database-integration.zip \
+    && wget -O /var/www/html/wordpress/wp-content/sqlite-database-integration.zip https://downloads.wordpress.org/plugin/sqlite-database-integration.zip \
+    && unzip /var/www/html/wordpress/wp-content/sqlite-database-integration.zip -d /var/www/html/wordpress/wp-content/mu-plugins \
+    && rm -rf /var/www/html/wordpress/wp-content/sqlite-database-integration.zip \
     && cp /var/www/html/wordpress/wp-content/mu-plugins/db.copy /var/www/html/wordpress/wp-content/db.php \
     && sed -i "s#{SQLITE_IMPLEMENTATION_FOLDER_PATH}#/var/www/html/wordpress/wp-content/mu-plugins#" /var/www/html/wordpress/wp-content/db.php \
     && sed -i 's#{SQLITE_PLUGIN}#sqlite-database-integration/load.php#' /var/www/html/wordpress/wp-content/db.php
