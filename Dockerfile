@@ -52,7 +52,7 @@ RUN cat <<EOF > /data/caddy/config/wordpress \
         import error_page \
         import encode \
     } \
-    && EOF
+EOF
 
 ENTRYPOINT ["/data/entrypoint.sh"]
 CMD ["/data/caddy/caddy", "run", "--config", "/data/caddy/Caddyfile"]
