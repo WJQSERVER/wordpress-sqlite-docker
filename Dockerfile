@@ -1,7 +1,5 @@
 FROM debian:12.5-slim
 
-VOLUME /data/caddy
-
 # 更新并安装所需的软件包
 RUN apt-get update && apt-get install -y \
     sed wget curl vim tar zstd
@@ -14,5 +12,7 @@ RUN rm /data/caddy/caddy.tar.gz
 RUN chmod +x /data/caddy/caddy 
 RUN chown www-data:www-data /data/caddy/caddy 
 RUN wget -O /data/caddy/Caddyfile https://raw.githubusercontent.com/WJQSERVER/tools-stable/main/web/caddy/Caddyfile
+
+VOLUME /data/caddy
 
 CMD ["/data/caddy/caddy", "run", "--config", "/data/caddy/Caddyfile"]
