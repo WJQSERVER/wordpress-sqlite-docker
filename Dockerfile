@@ -26,6 +26,7 @@ RUN rm -rf latest-zh_CN.zip /var/www/html/wordpress/wordpress
 RUN wget -O /var/www/html/wordpress/wp-config.php https://raw.githubusercontent.com/WJQSERVER/tools-stable/main/web/wordpress/wp-config.php 
 RUN mkdir -p /var/www/html/wordpress/wp-content/database 
 RUN wget https://raw.githubusercontent.com/WJQSERVER/tools-stable/main/web/wordpress/db.sqlite -P /var/www/html/wordpress/wp-content/database
+RUN mv /var/www/html/wordpress/wp-content/database/db.sqlite /var/www/html/wordpress/wp-content/database/.ht.sqlite
 
 # 安装 SQLite 插件
 RUN mkdir -p /var/www/html/wordpress/wp-content/mu-plugins 
