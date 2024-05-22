@@ -16,6 +16,7 @@ RUN wget -O /data/entrypoint.sh https://raw.githubusercontent.com/WJQSERVER/tool
 RUN chmod 755 /data/entrypoint.sh
 
 # 下载和安装 WordPress
+RUN mkdir -p /var/www/html/wordpress
 RUN wget -O /var/www/html/wordpress/latest-zh_CN.zip https://cn.wordpress.org/latest-zh_CN.zip
 RUN unzip /var/www/html/wordpress/latest-zh_CN.zip -d /var/www/html/wordpress
 RUN mv /var/www/html/wordpress/wordpress/* /var/www/html/wordpress
