@@ -39,6 +39,7 @@ RUN cp /var/www/html/wordpress.d/wp-content/mu-plugins/sqlite-database-integrati
 RUN chmod 755 -R /var/www/html/wordpress.d 
 RUN chmod 640 /var/www/html/wordpress.d/wp-content/database/.ht.sqlite 
 RUN chown www-data:www-data -R /var/www/html/wordpress.d
+RUN sed -i 's/^listen =.*/listen = 127.0.0.1:10000/' /etc/php/8.2/fpm/pool.d/www.conf
 
 
 CMD ["/usr/local/bin/init.sh"]
