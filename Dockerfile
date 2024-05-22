@@ -16,10 +16,10 @@ RUN wget -O /data/entrypoint.sh https://raw.githubusercontent.com/WJQSERVER/tool
 RUN chmod 755 /data/entrypoint.sh
 
 # 下载和安装 WordPress
-RUN wget -q https://cn.wordpress.org/latest-zh_CN.zip \
-    && unzip -qq latest-zh_CN.zip -d /var/www/html/wordpress \
-    && mv /var/www/html/wordpress/wordpress/* /var/www/html/wordpress \
-    && rm -rf latest-zh_CN.zip /var/www/html/wordpress/wordpress
+RUN wget -O /var/www/html/wordpress/latest-zh_CN.zip https://cn.wordpress.org/latest-zh_CN.zip
+RUN unzip /var/www/html/wordpress/latest-zh_CN.zip -d /var/www/html/wordpress
+RUN mv /var/www/html/wordpress/wordpress/* /var/www/html/wordpress
+RUN rm -rf latest-zh_CN.zip /var/www/html/wordpress/wordpress
 
 # 下载 wp-config.php 和数据库文件
 RUN wget -O /var/www/html/wordpress/wp-config.php https://raw.githubusercontent.com/WJQSERVER/tools-stable/main/web/wordpress/wp-config.php \
