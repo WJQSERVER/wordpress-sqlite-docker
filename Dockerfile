@@ -14,6 +14,7 @@ RUN chmod +x /data/caddy/caddy
 RUN chown www-data:www-data /data/caddy/caddy 
 RUN wget -O /data/caddy/Caddyfile https://raw.githubusercontent.com/WJQSERVER/tools-stable/main/web/caddy/Caddyfile
 RUN wget -O /usr/local/bin/entrypoint.sh https://raw.githubusercontent.com/WJQSERVER/tools-stable/main/web/caddy/entrypoint.sh 
+RUN chmod +x /usr/local/bin/entrypoint.sh
 
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 CMD ["/data/caddy/caddy", "run", "--config", "/data/caddy/config/Caddyfile"]
